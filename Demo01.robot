@@ -4,10 +4,9 @@ Library  Selenium2Library
 
 *** Test Cases ***
 Hello chrome headless
-    ${options}=  Evaluate  sys.modules['selenium.webdriver'].ChromeOptions()  sys, selenium.webdriver
-    ${options.set_binary}=  Set Variable  set_binary=/Applications/Google Chrome Canary.app/Contents/MacOS/Google Chrome Canary
-    ${options.add_argument}=  Set Variable  add_argument=--headless
-    Create WebDriver  Chrome  chrome_options=${options}
+    ${opt}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
+    Call Method    ${opt}    add_argument    --headless
+    Create Webdriver    Chrome    chrome_options=${opt}
     
     Open Browser   http://www.google.com   chrome
     Wait Until Page Contains    ffgdfgdfgdfgdfg
