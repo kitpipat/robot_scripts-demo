@@ -1,16 +1,7 @@
 *** Settings ***
 Library    Selenium2Library
 
-*** Variables ***
-${BROWSER}        chrome
-${GOOGLE URL}    http://www.google.com
+*** Test Cases ***
 
-*** Keywords ***
-    Open Browser    ${GOOGLE URL}    ${BROWSER}
-    Input Text    lst-ib    สวัสดี
-    Click Button    btnG
-    Wait Until Page Contains    สวัสดีตอนเช้า
-    
-*** Testcases ***
-Search
-Test Teardown    Close Browser
+My First Robot Test
+    Log To Console            Hello Robot World!
