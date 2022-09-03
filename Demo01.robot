@@ -10,5 +10,6 @@ ${GOOGLE URL}    http://www.google.com
 
     Input Text    lst-ib    สวัสดี
     Click Button    btnG
-
+*** Testcases ***
+Search
 Test Teardown    Close Browser
