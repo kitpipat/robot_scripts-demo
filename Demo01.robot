@@ -2,7 +2,7 @@
 Library    SeleniumLibrary
 Library    BuiltIn
 Library    String
-Suite Setup        Open Browser    about:blank    chrome
+Suite Setup        Open Browser    about:blank    ie
 Suite Teardown     Close All Browsers
 *** Variable ***
 ${url_facebook}        https://www.facebook.com
