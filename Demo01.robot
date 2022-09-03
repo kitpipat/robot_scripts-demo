@@ -1,14 +1,38 @@
 *** Settings ***
-Library           Selenium2Library
+Library     Selenium2Library
+
+
+*** Variables ***
+${browser}      Chrome
+${url_google}   http://www.google.com
+${test_fb}      Facebook
+${user_fb}      {Username}
+${pass_fb}      {Password}
+
+
 *** Test Cases ***
-Open google chrome
-    ${opt}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
-    Comment    Require no sandbox and disable setuid sandbox for support chrome on linux
-    Call Method    ${opt}    add_argument    --no-sandbox
-    Call Method    ${opt}    add_argument    --disable-setuid-sandbox
-    Comment    Call Method    ${opt}    add_argument    --proxy-server\=http://localhost:3128
-    Comment    Call Method    ${opt}    add_argument    --proxy-server\=http://199.245.56.153:3128
-    Create Webdriver    Chrome    chrome_options=${opt}
-    Go To    https://sook.dev-thaitrade.com/
-    Capture Page Screenshot
-    [Teardown]    Close Browser
+Search Facebook from Google
+  Open Google
+  Search Facebook
+
+Log in on Facebook
+  Insert user and password
+  Click login btn
+
+
+*** Keywords ***
+Open Google
+  Open Browser  ${url_google}   ${browser}
+
+Search Facebook
+  Input Text      id=lst-ib   ${test_fb}
+  Click Button    name=btnK
+  Wait Until Page Contains    ${test_fb}
+  Click Link  https://th-th.facebook.com/
+
+Insert user and password
+  Input Text  name=email  ${user_fb} 
+  Input Text  name=pass   ${pass_fb}
+
+Click login btn
+  Click Element  id=loginbutton
