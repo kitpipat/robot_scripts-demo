@@ -1,8 +1,11 @@
 Library           Selenium2Library
+Test Setup	  Go to G
+Suite Teardown	  Close All Browsers
 
 
 *** Variables ***
 ${URL}		http://google.pt
+${SearchWord}   abcd
 
 *** Test Cases ***
 Simple example Search
