@@ -15,7 +15,7 @@ Simple example Search
 *** Keywords ***
 Simple Search
 	[Arguments]		${SearchWord}
-	# Input Text    id:input    ${SearchWord}
+	Input Text    id:input    ${SearchWord}
 	# Press Keys    id:input    ENTER
 	Input Text    name:q    ${SearchWord}
 	Press Keys    name:q    ENTER
