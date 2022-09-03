@@ -8,7 +8,7 @@ ${timeout}        10s
 
 *** Test Cases ***
 Open QA Hive website via chrome headless mode
-    Create Webdriver    Chrome    chrome_options=${opt}
+    Create Webdriver    Chrome    chrome_options=${options}
     ${chrome_options} =     Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
     Call Method    ${chrome_options}   add_argument    headless
     Call Method    ${chrome_options}   add_argument    disable-gpu
