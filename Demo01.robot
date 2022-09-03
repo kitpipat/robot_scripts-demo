@@ -1,14 +1,15 @@
 *** Settings ***
 Library    Selenium2Library
-
-*** Settings ***
-Library                             OperatingSystem
+Library    OperatingSystem
 
 *** Variables ***
 ${GOOD_TEXT} =                      Hello nice humans! 
 ${BAD_TEXT}                         Robots will take over! 
 
 ***Test Cases***
+
+My First Robot Test
+    Log To Console            Hello Robot World!
 
 My Third Robot Test
     Create File                     new_file.txt                        ${GOOD_TEXT}
