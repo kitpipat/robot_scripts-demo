@@ -1,6 +1,13 @@
 *** Settings ***
 Library           Selenium2Library
 
+*** Settings ***
+Library    SeleniumLibrary
+Library    BuiltIn
+Library    String
+Suite Setup        Open Browser    about:blank    chrome
+Suite Teardown     Close All Browsers
+
 *** Variables ***
 ${url_facebook}        https://www.facebook.com
 ${title_facebook}      Facebook - เข้าสู่ระบบหรือสมัครใช้งาน
