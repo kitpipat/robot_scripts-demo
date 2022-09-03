@@ -8,9 +8,13 @@ ${timeout}        10s
 
 *** Test Cases ***
 Open QA Hive website via chrome headless mode
-    ${opt}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
-    Call Method    ${opt}    add_argument    --headless
     Create Webdriver    Chrome    chrome_options=${opt}
+    ${chrome_options} =     Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
+    Call Method    ${chrome_options}   add_argument    headless
+    Call Method    ${chrome_options}   add_argument    disable-gpu
+    ${options}=     Call Method     ${chrome_options}    to_capabilities  
+    
+    
     Go To    ${URL}
     Wait Until Page Contains    ${pageTitle}    ${timeout}
     Capture Page Screenshot
