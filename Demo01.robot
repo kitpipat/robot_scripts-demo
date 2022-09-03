@@ -1,17 +1,26 @@
-*** Settings ***
-Library  Selenium2Library
+Library           Selenium2Library
 
-Suite Setup     Run keywords    Use Headless Browser
+*** Variables ***
+${url}            https://medium.com/@nottyo/
+@{chrome_arguments}    --disable-infobars    --headless    --disable-gpu
+${page_text}      Test Automation Engineer. Let’s make awesome tests
+${timeout}        10s
 
 *** Test Cases ***
-Create Headless Browser
-    Go To   https://twitter.com
+TC_EXP_00001
+    [Documentation]    Sample Test For Chrome Headless
+    [Tags]    chrome    headless
+    ${chrome_options}=    Set Chrome Options
+    Create Webdriver    Chrome    chrome_options=${chrome_options}
+    Go To    ${url}
+    Wait Until Page Contains    ${page_text}    ${timeout}
     Capture Page Screenshot
-    [Teardown]  Close All Browsers
+    [Teardown]    Close Browser
 
 *** Keywords ***
-Use Headless Browser
-    ${chrome_options} =     Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()   sys, selenium.webdriver
-    Call Method     ${chrome_options}   add_argument    headless
-    Call Method     ${chrome_options}   add_argument    disable-gpu
-    Create Webdriver    Chrome  chrome_options=${chrome_options}
+Set Chrome Options
+    [Documentation]    Set Chrome options for headless mode
+    ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
+    : FOR    ${option}    IN    @{chrome_arguments}
+    \    Call Method    ${options}    add_argument    ${option}
+    [Return]    ${options}
