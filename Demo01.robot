@@ -1,38 +1,19 @@
 *** Settings ***
-Library     Selenium2Library
-
-
+Library    Selenium2Library
 *** Variables ***
-${browser}      Chrome
-${url_google}   http://www.google.com
-${test_fb}      Facebook
-${user_fb}      0923347061
-${pass_fb}      TRT@2017
-
-
-*** Test Cases ***
-Search Facebook from Google
-  Open Google
-  Search Facebook
-
-Log in on Facebook
-  Insert user and password
-  Click login btn
-
-
+${BROWSER}        chrome
+${GOOGLE URL}    http://www.google.com
 *** Keywords ***
-Open Google
-  Open Browser  ${url_google}   ${browser}
-
-Search Facebook
-  Input Text      id=lst-ib   ${test_fb}
-  Click Button    name=btnK
-  Wait Until Page Contains    ${test_fb}
-  Click Link  https://th-th.facebook.com/
-
-Insert user and password
-  Input Text  name=email  ${user_fb} 
-  Input Text  name=pass   ${pass_fb}
-
-Click login btn
-  Click Element  id=loginbutton
+เข้าไป google
+    Open Browser    ${GOOGLE URL}    ${BROWSER}
+ค้นหาคำว่าสวัสดี
+    Input Text    lst-ib    สวัสดี
+    Click Button    btnG
+รอจนกว่าจะเจอคำว่าสวัสดีตอนเช้า
+    Wait Until Page Contains    สวัสดีตอนเช้า
+*** Testcases ***
+Search
+    เข้าไป google
+    ค้นหาคำว่าสวัสดี
+    รอจนกว่าจะเจอคำว่าสวัสดีตอนเช้า
+Test Teardown    Close Browser
