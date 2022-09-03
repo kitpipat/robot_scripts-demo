@@ -1,26 +1,16 @@
-Library           Selenium2Library
-Test Setup	  Go to G
-Suite Teardown	  Close All Browsers
-
+*** Settings ***
+Library    Selenium2Library
 
 *** Variables ***
-${URL}		http://google.pt
-${SearchWord}   abcd
-
-*** Test Cases ***
-Simple example Search
-	Simple Search		Raul
-
+${BROWSER}        chrome
+${GOOGLE URL}    http://www.google.com
 
 *** Keywords ***
-Simple Search
-	[Arguments]		${SearchWord}
-	Input Text    id:input    ${SearchWord}
-	# Press Keys    id:input    ENTER
-	Input Text    name:q    ${SearchWord}
-	Press Keys    name:q    ENTER
-
-Go to G
-	Open Browser	${URL}		Chrome
-	Maximize Browser Window
-	Sleep    5s
+    Open Browser    ${GOOGLE URL}    ${BROWSER}
+    Input Text    lst-ib    สวัสดี
+    Click Button    btnG
+    Wait Until Page Contains    สวัสดีตอนเช้า
+    
+*** Testcases ***
+Search
+Test Teardown    Close Browser
