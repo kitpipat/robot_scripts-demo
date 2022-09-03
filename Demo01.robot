@@ -1,5 +1,6 @@
 *** Settings ***
-Library    Selenium2Library
+Library           Selenium2Library    implicit_wait=50
+
 *** Variables ***
 ${BROWSER}        chrome
 ${GOOGLE URL}    http://www.google.com
@@ -9,8 +10,5 @@ ${GOOGLE URL}    http://www.google.com
 
     Input Text    lst-ib    สวัสดี
     Click Button    btnG
-
-*** Testcases ***
-Search
 
 Test Teardown    Close Browser
