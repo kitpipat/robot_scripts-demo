@@ -6,8 +6,8 @@ Library     Selenium2Library
 ${browser}      Chrome
 ${url_google}   http://www.google.com
 ${test_fb}      Facebook
-${user_fb}      {Username}
-${pass_fb}      {Password}
+${user_fb}      0923347061
+${pass_fb}      TRT@2017
 
 
 *** Test Cases ***
