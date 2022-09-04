@@ -8,7 +8,7 @@ Suite Setup  Setup chromedriver
 
 *** Variables ***
 ${URL}		http://google.pt
-${EXECDIR}      C:/Users/Administrator/AppData/Local/Programs/Python\Python38
+${EXECDIR}      C:/Users/Administrator/AppData/Local/Programs/Python/Python38
 
 *** Keywords ****
 Setup chromedriver
