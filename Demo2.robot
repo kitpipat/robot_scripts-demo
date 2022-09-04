@@ -25,6 +25,6 @@ Simple Search
 	Press Keys    name:q    ENTER
 
 Go to G
-	Open Browser	${URL}		ie
+	Open Browser	${URL}		Chrome
 	Maximize Browser Window
 	Sleep    5s
